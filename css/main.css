@@ -1,0 +1,22 @@
+body, #main{
+    display: flex;
+    justify-content: center;
+}
+
+body{
+    background-color: #1F1F1F;
+}
+
+table{
+    border: 5px solid black;
+}
+
+td{
+    background-size: cover;
+    background-position: center center;
+    transition: .35s;
+}
+
+td:hover{
+    background-size: 115% 115%;
+}
