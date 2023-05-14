@@ -14,7 +14,7 @@ table{
 td{
     background-size: cover;
     background-position: center center;
-    transition: .35s;
+    
 }
 
 td:hover{

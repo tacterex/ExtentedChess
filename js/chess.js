@@ -72,6 +72,12 @@ const OnClickElement = (i, j) =>{
         return
     }
 
+    for(let i = 0; i < 9; i++){
+        for(let j = 0; j < 9; j++){
+            cells_[9 * i + j].style.outlineColor = "rgba(0, 0, 0, 0)"
+        }
+    }
+
     if(is_none(element) || move != element.color){
         selected = EmptyPiece
         selected_position = {x: -1, y: -1}
@@ -186,6 +192,108 @@ const OnClickElement = (i, j) =>{
     if(element.type == "bishop"){
         let x = i + 1
         let y = j + 1
+        while (x < 9 && y < 9 && is_none(Board[x][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            x++
+            y++
+        }
+        if(x < 9 && y < 9) if(Board[x][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i - 1
+        y = j - 1
+        while (x >= 0 && y >= 0 && is_none(Board[x][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            x--
+            y--
+        }
+        if(x >= 0 && y >= 0) if(Board[x][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i + 1
+        y = j - 1
+        while (y >= 0 && x < 9 && is_none(Board[x][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            y--
+            x++
+        }
+        if(y >= 0 && x < 9) if(Board[x][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i - 1
+        y = j + 1
+        while (y < 9 && x >= 0 && is_none(Board[x][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            y++
+            x--
+        }
+        if(y < 9 && x >= 0) if(Board[x][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+    }
+    if(element.type == "queen"){
+        let x = i + 1
+        let y = j
+        while (x < 9 && is_none(Board[x][j])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            x++
+        }
+        if(x < 9) if(Board[x][j].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i - 1
+        y = j
+        while (x >= 0 && is_none(Board[x][j])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            x--
+        }
+        if(x >= 0) if(Board[x][j].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i
+        y = j - 1
+        while (y >= 0 && is_none(Board[i][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            y--
+        }
+        if(y >= 0) if(Board[i][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i
+        y = j + 1
+        while (y < 9 && is_none(Board[i][y])){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+            y++
+        }
+        if(y < 9) if(Board[i][y].color == move){
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0)" 
+        }
+        else{
+            cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+        }
+        x = i + 1
+        y = j + 1
         while (x < 9 && y < 9 && is_none(Board[x][y])){
             cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
             x++
