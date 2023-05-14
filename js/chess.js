@@ -345,6 +345,17 @@ const OnClickElement = (i, j) =>{
             cells_[9 * x + y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
         }
     }
+    if(element.type == "king"){
+        const possible = [{x: i + 1, y: j + 1}, {x: i + 1, y: j}, {x: i + 1, y: j - 1},
+            {x: i, y: j + 1}, {x: i, y: j - 1},
+            {x: i - 1, y: j + 1}, {x: i - 1, y: j}, {x: i - 1, y: j - 1}]
+        possible.forEach((f) => {
+            if(f.x >= 0 && f.x < 9 && f.y >= 0 && f.y <9) if(
+                Board[f.x][f.y].color != move && Board[f.x][f.y].type != "king"){
+                    cells_[9 * f.x + f.y].style.outlineColor = "rgba(0, 0, 0, 0.4)"
+                }
+        })
+    }
 
     }
     return res
